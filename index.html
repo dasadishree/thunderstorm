@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>thunderstorm</title>
+</head>
+
+  <style>
+    body {
+      background: MidnightBlue;
+    }
+  </style>
+
+<body>
+  <!-- Your HTML will go here... -->
+</body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.min.js"></script>
+
+  <script>
+    var rain = new Howl({
+      src: 'rain.mp3',
+      volume: 0.2
+    })
+
+    var body = document.body
+
+    function flashOn() {
+      console.log('Flashing On')
+      body.style.background = 'white'
+
+      // setTimeout will call flashOff after 10ms
+      setTimeout(flashOff, 10)
+    }
+
+    function flashOff() {
+      console.log('Flashing Off')
+      body.style.background = 'MidnightBlue'
+    }
+
+    var firstClick = true
+
+    function click() {
+      console.log('Clicking')
+      flashOn()
+
+      // If this is the first click, start the rain and set firstClick to false.
+      if (firstClick) {
+        rain.play()
+        firstClick = false
+      }
+    }
+
+    // This Event Listener will trigger a flash with every click
+    window.addEventListener('click', click)
+  </script>
+</html>
