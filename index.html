@@ -9,11 +9,33 @@
     body {
       background: MidnightBlue;
     }
+
+      #ground {
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 50px;
+
+        background: black;
+      }
+    #tree {
+      position: absolute;
+
+      left: 0;
+      bottom: 0;
+
+      height: 200px;
+      width: 200px;
+    }
+
   </style>
 
-<body>
-  <!-- Your HTML will go here... -->
-</body>
+  <body>
+    <div id="ground"></div>
+    <img id="tree" src="tree.png" />
+  </body>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.min.js"></script>
 
@@ -31,6 +53,11 @@
 
       // setTimeout will call flashOff after 10ms
       setTimeout(flashOff, 10)
+
+      // There is a 75% chance that each flash will trigger another flash
+      if (Math.random() < 0.75) {
+        setTimeout(flashOn, 50 + Math.random() * 450)
+      }
     }
 
     function flashOff() {
